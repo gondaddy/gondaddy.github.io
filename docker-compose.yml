@@ -1,0 +1,21 @@
+services:
+  site:
+    image: mcr.microsoft.com/devcontainers/jekyll:2-bullseye
+    working_dir: /workspaces/site
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    volumes:
+      - .:/workspaces/site
+    environment:
+      BUNDLE_PATH: vendor/bundle
+      BUNDLE_BIN: vendor/bundle/bin
+      JEKYLL_ENV: development
+    command: >
+      bash -lc "bundle install &&
+      bundle exec jekyll serve
+      --config _config.yml,_config_dev.yml
+      --host 0.0.0.0
+      --port 4000
+      --livereload
+      --livereload-port 35729"

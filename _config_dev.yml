@@ -1,0 +1,7 @@
+# Development-only overrides for Docker preview.
+# Keep PWA disabled locally so service worker cache does not show stale pages.
+pwa:
+  enabled: false
+  cache:
+    enabled: false
+    deny_paths:
